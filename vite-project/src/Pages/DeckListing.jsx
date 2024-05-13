@@ -17,7 +17,7 @@ export default function DeckListing({cardData}){
               <div>{singlecard.type}</div>
               <div>{singlecard.power}</div>
               <div>{singlecard.toughness}</div>
-              <Link to={`/SingleCard/${singlecard.multiverseid}`}>
+              <Link to={`/singleCard/${singlecard.multiverseid}`}>
               <img src={singlecard.imageUrl} />
               </Link>
             </li>

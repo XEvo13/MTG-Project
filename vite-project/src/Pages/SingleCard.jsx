@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 
 
 export default function SingleCard({cardData}){
@@ -9,16 +9,11 @@ export default function SingleCard({cardData}){
 
 
     return(
-
+        <div className="singleCard">
         <div>{foundCard.name}</div>
-
-        // <div className="singleCard">
-        //     <div className="cardDetails">
-        //         <img />
-        //         <div className="details">
-
-        //         </div>
-        //     </div>
-        // </div>
+        <Link to={`/singleCard/${multiverseid}/edit`}>
+        <div>Edit Me!</div>
+        </Link>
+        </div>
     )
 }

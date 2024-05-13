@@ -16,3 +16,16 @@
 
 
 // }
+
+import axios from "axios";
+
+const API_URL = "https://api.magicthegathering.io/v1";
+export async function fetchCards() {
+  const cardsURL = `${API_URL}/cards`;
+  try {
+    const response = await axios.get(cardsURL);
+    return response.data.cards;
+  } catch (error) {
+    console.log("error", error);
+  }
+}
