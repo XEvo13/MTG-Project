@@ -5,16 +5,16 @@ export default function Homepage(){
 
   return (
     <div className="homepage">
-      <h1>Homepage</h1>
+      <h1></h1>
       <div className="homepageMenu">
         <Link to="/createCard">
-          <div>Create</div>
+          <div className="homepageMenuCard" >Create</div>
         </Link>
         <Link to="/deckListing">
-          <div>DeckListing</div>
+          <div className="homepageMenuCard">DeckListing</div>
         </Link>
         <Link to="/favourites">
-          <div>Favs</div>
+          <div className="homepageMenuCard">Favs</div>
         </Link>
       </div>
     </div>

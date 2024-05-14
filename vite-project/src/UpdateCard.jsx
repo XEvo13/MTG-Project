@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom"
 import { Navigate } from "react-router-dom";
 
 
-export default function UpdateCard({cardData}){
+export default function UpdateCard({cardData,setCardData}){
     const navigate = useNavigate();
     const {multiverseid} = useParams()
     const cardFound = cardData.find((card) => card.multiverseid == multiverseid) 
@@ -28,16 +28,18 @@ export default function UpdateCard({cardData}){
         
         const UpdatedCard = cardData.map((card) => {
         if(card.multiverseid == multiverseid){    
-        return(multiverseid, name,type,power,toughness,imageUrl)}
-        return cardFound
+            return{multiverseid, name,type,power,toughness,imageUrl}
+        }
+        return card;
     });
+        setCardData(UpdatedCard)
         navigate ("/");
     }
 
     return(
         <div>
         <h1>Add Card</h1>
-        <form>
+        <form className="form"  style ={{display: "flex", alignItems:"flex-start", flexDirection:"column"}}>
             <div className="inputForm">
             <label>Name:</label>
             <input

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import "../App.css"
 
 export default function DeckListing({cardData}){
 
@@ -9,21 +10,24 @@ export default function DeckListing({cardData}){
           <h1>Magic: The Gathering </h1>
           <h2>Cards Listing</h2>
         </div>
-        <div>Maping of the Cards</div>
-        <ul className="cardsLi" >
-          {cardData.map((singlecard, index) => (
-            <li className="cards" key={index}>
-              <div>{singlecard.name}</div>
-              <div>{singlecard.type}</div>
-              <div>{singlecard.power}</div>
-              <div>{singlecard.toughness}</div>
-              <Link to={`/singleCard/${singlecard.multiverseid}`}>
-              <img src={singlecard.imageUrl} />
-              </Link>
-            </li>
-          ))}
+        {/* <div>Maping of the Cards</div> */}
+        <ul className="cardsLi">
+          {cardData.map((singlecard, index) => {
+            if (!singlecard.imageUrl) return;
+            return (
+              <li className="cards" key={index}>
+                <div style={{backgroundColor:"black", width: "223px"}}>{singlecard.name}</div>
+                <div>{singlecard.type}</div>
+                {/* <div>{singlecard.power}</div>
+                <div>{singlecard.toughness}</div> */}
+                <Link to={`/singleCard/${singlecard.multiverseid}`}>
+                  <img style={{borderRadius: "10px"}} src={singlecard.imageUrl} />
+                </Link>
+                <br/>
+              </li>
+            );
+          })}
         </ul>
-        <div>{cardData[0].name}</div>
       </div>
     );
 }

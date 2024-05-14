@@ -27,19 +27,14 @@ export default function CreateCard({addCard}){
         const imageUrl = image || defaultImg
 
         addCard({multiverseid,name,type,power,toughness,imageUrl})
-
         navigate("/deckListing")
-
     }
-
-    
-
     return (
         
         <div>
         <h1>Add Card</h1>
-        <form>
-            <div className="inputForm">
+        <form className="form"  style ={{display: "flex", alignItems:"flex-start", flexDirection:"column"}} >
+            <div className="inputForm" >
             <label>Name:</label>
             <input
                 type="text"
