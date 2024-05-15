@@ -1,14 +1,13 @@
 import { Link } from "react-router-dom";
 import "../App.css"
 import { useState } from "react";
-import loading from "../assets/loading.gif"
+// import loading from "../assets/loading.gif"
 import Navbar from "../components/Navbar";
 
 export default function DeckListing({cardData,isLoading}){
     const [type, setType] = useState("");
     const handleSetType = (e) => setType(e.target.value);
    
-
     return (
       <>
       <Navbar/>  
@@ -27,11 +26,7 @@ export default function DeckListing({cardData,isLoading}){
         
         <ul className="cardsLi"  >
           {isLoading === true?
-          <>
-          <img src={loading} style={{width:"320%"}}/>
-          {/* <img src={loading} />
-          <img src={loading} /> */}
-          </>
+          <h1>Just a few more seconds...</h1>
           :
           cardData.map((singlecard, index) => {
             if (!singlecard.imageUrl) return;
@@ -39,7 +34,7 @@ export default function DeckListing({cardData,isLoading}){
             return (
               
               <li className="cards" key={index}>
-                <div style={{ backgroundColor: "#59b2ff", width: "223px" }}>
+                <div style={{ backgroundColor: "#59b2ff", width: "223px"}}>
                   {singlecard.name}
                 </div>
                 <div>{singlecard.type}</div>

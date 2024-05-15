@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import uuid from "react-uuid";
 
 
 export default function CreateCard({addCard}){
@@ -25,7 +26,7 @@ export default function CreateCard({addCard}){
         e.preventDefault();
 
        
-        const multiverseid = 876234;
+        const multiverseid = uuid();
         const imageUrl = image || defaultImg
 
         addCard({multiverseid,name,manaCost,type,text,imageUrl})

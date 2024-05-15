@@ -22,6 +22,7 @@ export default function MyCards({favourites}){
         :
         favourites.map((singlecard, index) => {
           return (
+            
             <li className="cards" style={{display:"flex"}} key={index}>
            
               <div >{singlecard.name}</div>

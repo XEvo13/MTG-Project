@@ -11,6 +11,7 @@ export default function Navbar(){
                 <NavLink to="/deckListing" style={{ padding:"40px"}} className={({isActive}) => (isActive ? "active" : "")}>Library  </NavLink>
                 <NavLink to="/createCard" style={{ padding:"40px"}} className={({isActive}) => (isActive ? "active" : "")}>  Create Card  </NavLink>
                 <NavLink to="/favourites" style={{ padding:"40px"}} className={({isActive}) => (isActive ? "active" : "")}>Favourites  </NavLink>
+                <a href="https://magic.wizards.com/en/how-to-play" target="_blanck" style={{ padding:"40px"}} className={({isActive}) => (isActive ? "active" : "")}>Learn how to Play!!  </a>
             </ul>
         </nav>
     )

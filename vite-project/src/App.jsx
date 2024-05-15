@@ -3,9 +3,6 @@ import {Routes, Route} from "react-router-dom"
 import axios from 'axios'
 import './App.css'
 
-
-
-
 //Pages
 import Homepage from './Pages/Homepage'
 import DeckListing from './Pages/DeckListing'
@@ -14,7 +11,8 @@ import MyCards from './Pages/MyCards'
 import SingleCard from './Pages/SingleCard'
 import UpdateCard from './UpdateCard'
 import { fetchCards } from './lib/Data'
-import Navbar from './components/Navbar'
+import Footer from './components/Footer'
+// import Navbar from './components/Navbar'
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -35,25 +33,18 @@ function App() {
   const addCard = (card) => setCardData([...cardData,card]);
 
  
-// DELETE CARD
+// DELETE CARD FROM LIBRARY
 const deleteCard = (multiverseid) => {
   setCardData(cardData.filter((card) => card.multiverseid !== multiverseid))}
 
 // ADD TO FAVOURITES
- 
-  /* setFavourites(cardData) */
-  // useEffect(()=>{
-  //   setFavourites(cardData)
-  // }, [])
   console.log(cardData)
   const [favourites,setFavourites] = useState([]);
   const addFavourite = (card) => setFavourites([...favourites,card]);
   console.log(favourites)
-  // const test = fetchCards();
-  // console.log(test)
+
   return (
     <>
-    
     <Routes>
      <Route path="/" element={<Homepage />}/>
      <Route path="/deckListing" element={<DeckListing cardData={cardData} isLoading={isLoading}/>}/>
@@ -62,6 +53,7 @@ const deleteCard = (multiverseid) => {
      <Route path="singleCard/:multiverseid" element ={<SingleCard cardData={cardData} deleteCard={deleteCard} addFavourite={addFavourite}/>}/>
      <Route path="/favourites" element={<MyCards  favourites={favourites}/>}/>
     </Routes>
+    <Footer/>
     </>
   )
 }
