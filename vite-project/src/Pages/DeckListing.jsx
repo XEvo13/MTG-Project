@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "../App.css"
 import { useState } from "react";
-import spinner from "../assets/spinner.gif"
+import loading from "../assets/loading.gif"
 import Navbar from "../components/Navbar";
 
 export default function DeckListing({cardData,isLoading}){
@@ -28,9 +28,9 @@ export default function DeckListing({cardData,isLoading}){
         <ul className="cardsLi"  >
           {isLoading === true?
           <>
-          <img src={spinner} />
-          <img src={spinner} />
-          <img src={spinner} />
+          <img src={loading} style={{width:"320%"}}/>
+          {/* <img src={loading} />
+          <img src={loading} /> */}
           </>
           :
           cardData.map((singlecard, index) => {

@@ -36,7 +36,6 @@ export default function CreateCard({addCard}){
         <Navbar/>
         <h1>Magic: The Gathering </h1>
         <hr/>
-        <h2>My Favourite Cards</h2>
         <div>
         <h1>Add Card</h1>
         <form className="form"  style ={{display: "flex", alignItems:"flex-start", flexDirection:"column"}} >

@@ -4,12 +4,12 @@ export default function Homepage(){
 
 
   return (
-    <div>
+    <div >
       <div style={{fontSize:"80px",fontFamily:'Inter'}}>Magic: the Gathering</div>
       <hr/>
       <div style={{display:"grid", gridTemplateColumns: "33% 33% 33%"}}>  
-      <h1>Create</h1>
-      <h1>Cards Listing</h1>
+      <h1>Create a card</h1>
+      <h1>Card's Library</h1>
       <h1>Favourites</h1> 
       </div>
        <div className="homepage">
