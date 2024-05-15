@@ -68,7 +68,9 @@
   background-size: cover;
   height: 600px;
   text-align: center; */
-  background-color: aliceblue;
+  background-color: #000d17;
+  /* background-image: url("./assets/BgMagic.avif"); */
+  
   
 }
 .homepageMenu{
@@ -86,7 +88,7 @@
 
 .homepageMenuCard{
  font-size: 30px;
-  color: black;
+  color: rgb(255, 255, 255);
 }
 
 .singleCard{

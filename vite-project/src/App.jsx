@@ -17,19 +17,23 @@ import { fetchCards } from './lib/Data'
 import Navbar from './components/Navbar'
 
 function App() {
-
+  const [isLoading, setIsLoading] = useState(true);
   const [cardData,setCardData] = useState([]); 
- 
+
 // GET CARD DATA
   const cardsURL = "https://api.magicthegathering.io/v1/cards"; 
   useEffect(() => {
     fetchCards().then((data) => {
-      setCardData(data);
+      setCardData(data); // IMPLEMENT TIMEOUT MISSING......
+      const timeoutId= setTimeout(()=>{
+        setIsLoading(false);
+      },4000)
     });
   }, []);
 
 // ADD CARD
   const addCard = (card) => setCardData([...cardData,card]);
+
  
 // DELETE CARD
 const deleteCard = (multiverseid) => {
@@ -49,10 +53,10 @@ const deleteCard = (multiverseid) => {
   // console.log(test)
   return (
     <>
-    <Navbar />
+    
     <Routes>
      <Route path="/" element={<Homepage />}/>
-     <Route path="/deckListing" element={<DeckListing cardData={cardData}/>}/>
+     <Route path="/deckListing" element={<DeckListing cardData={cardData} isLoading={isLoading}/>}/>
      <Route path="/createCard" element={<CreateCard addCard={addCard}/>}/>
      <Route path="/singleCard/:multiverseid/edit" element ={<UpdateCard cardData={cardData} setCardData={setCardData} />}/>
      <Route path="singleCard/:multiverseid" element ={<SingleCard cardData={cardData} deleteCard={deleteCard} addFavourite={addFavourite}/>}/>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import Navbar from "../components/Navbar";
 
 
 export default function CreateCard({addCard}){
@@ -9,14 +9,16 @@ export default function CreateCard({addCard}){
 
     const [name,setName] = useState("");
     const [type,setType] = useState("");
-    const [power,setPower] = useState(0);
-    const [toughness, setToughness] = useState(0);
+    const [manaCost,setMana] = useState("");
+    const [text,setText] = useState("");
+    // const [toughness, setToughness] = useState(0);
     const [image, setImage] = useState("");
   
     const handleName = (e) => {setName(e.target.value)}
     const handleType = (e) => {setType(e.target.value)}
-    const handlePower = (e) => {setPower(e.target.value)}
-    const handletoughness = (e) => {setToughness(e.target.value)}
+    const handleText = (e) => {setText(e.target.value)}
+    const handleMana = (e) => {setMana(e.target.value)}
+    // const handletoughness = (e) => {setToughness(e.target.value)}
     const handleImage = (e) => {setImage(e.target.value)}
 
     const handleSubmit = (e) => {
@@ -26,11 +28,15 @@ export default function CreateCard({addCard}){
         const multiverseid = 876234;
         const imageUrl = image || defaultImg
 
-        addCard({multiverseid,name,type,power,toughness,imageUrl})
+        addCard({multiverseid,name,manaCost,type,text,imageUrl})
         navigate("/deckListing")
     }
     return (
-        
+        <>
+        <Navbar/>
+        <h1>Magic: The Gathering </h1>
+        <hr/>
+        <h2>My Favourite Cards</h2>
         <div>
         <h1>Add Card</h1>
         <form className="form"  style ={{display: "flex", alignItems:"flex-start", flexDirection:"column"}} >
@@ -65,27 +71,29 @@ export default function CreateCard({addCard}){
             </div>
 
             <div className="inputForm">
-            <label>Power:</label>
+            <label>Text:</label>
             <input
                 type="text"
                 name="description"
-                value={power}
-                onChange={handlePower}
+                value={text}
+                onChange={handleText}
             />
             </div>
 
             <div className="inputForm">
-            <label>Toughness:</label>
+            <label>Mana:</label>
             <input
-                type="number"
-                name="price"
-                value={toughness}
-                onChange={handletoughness}
+                type="text"
+                name="manaCost"
+                value={manaCost}
+                onChange={handleMana}
             />
             </div>
+
             <button type="submit" onClick={handleSubmit}>Save Card</button>
            
         </form>
         </div>
+        </>
     );
 }

@@ -1,10 +1,14 @@
+import { useState } from "react";
 import { Link, useParams } from "react-router-dom"
 import { useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 export default function SingleCard({cardData, deleteCard, addFavourite}){
-
+    
     const navigate = useNavigate();
     const {multiverseid} = useParams();
+
+
 
     const foundCard = cardData.find((card) => card.multiverseid == multiverseid) 
 
@@ -13,7 +17,6 @@ export default function SingleCard({cardData, deleteCard, addFavourite}){
 
         deleteCard(foundCard.multiverseid);
         navigate("/deckListing");
-
     }
 
     const handleFavourites = (e) => {
@@ -25,19 +28,26 @@ export default function SingleCard({cardData, deleteCard, addFavourite}){
   }
 
     return (
+      <>
+      <Navbar/>
+      <h1>Magic: The Gathering </h1>
+      <hr/>
       <div className="singleCard">
         <div>
         <div>Name: {foundCard.name}</div>
         <div>Mana Cost: {foundCard.manaCost}</div>
-        <img src={foundCard.imageUrl}/>
+        <img src={foundCard.imageUrl} style={{borderRadius:"10%"}}/>
         <div>Type: {foundCard.type}</div>
         <div>Text: {foundCard.text}</div>
         </div>
-        <button onClick={handleFavourites}>Add to Favourites</button>
+        <div style={{display:"flex", justifyContent:"space-around"}}>
+        <button onClick={handleFavourites} style={{backgroundColor:"red"}}>Add to Favourites</button>
         <button onClick={handleDelete}>Delete</button>
+        </div>
         <Link to={`/singleCard/${multiverseid}/edit`}>
-          <div>Edit Me!</div>
+          <div style={{color:"white"}}>Edit Me!</div>
         </Link>
       </div>
+      </>
     );
 }

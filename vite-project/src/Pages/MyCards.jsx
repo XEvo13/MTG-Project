@@ -1,29 +1,39 @@
  import { Link, useNavigate } from "react-router-dom";
  import "../App.css"
+ import Navbar from "../components/Navbar"; 
 
 export default function MyCards({favourites}){
   console.log(favourites)
    const navigate = useNavigate();
     return(
-      <div className="MyCards">
-      <div className="MyCardsHeader">
-        <h1>Magic: The Gathering </h1>
+      <>
+      <Navbar/>
+      <h1>Magic: The Gathering </h1>
+        <hr/>
         <h2>My Favourite Cards</h2>
+      <div className="MyCards">
+      
+      <div className="MyCardsHeader">
+        
+
       </div>
         {favourites.length ===0 ?
         <Link to="/decklisting">No cards, back to CardList</Link>
         :
         favourites.map((singlecard, index) => {
           return (
-            <li className="cards" key={index}>
+            <li className="cards" style={{display:"flex"}} key={index}>
+           
               <div >{singlecard.name}</div>
               <div>{singlecard.type}</div>
-              <img src={singlecard.imageUrl} />
+              <img src={singlecard.imageUrl} style={{borderRadius:"10%"}} />
+           
             </li>
           );
         })
         }
     
       </div>
+      </>
     )
 }

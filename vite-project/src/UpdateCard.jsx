@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom"
 import { Navigate } from "react-router-dom";
-
+import Navbar from "./components/Navbar";
 
 export default function UpdateCard({cardData,setCardData}){
     const navigate = useNavigate();
@@ -13,14 +13,14 @@ export default function UpdateCard({cardData,setCardData}){
 
     const [name,setName] = useState(cardFound.name);
     const [type,setType] = useState(cardFound.type);
-    const [power,setPower] = useState(cardFound.power);
-    const [toughness, setToughness] = useState(cardFound.toughness);
+    const [manaCost,setMana] = useState("");
+    const [text,setText] = useState("");
     const [imageUrl, setImage] = useState(cardFound.imageUrl);
   
     const handleName = (e) => {setName(e.target.value)}
     const handleType = (e) => {setType(e.target.value)}
-    const handlePower = (e) => {setPower(e.target.value)}
-    const handletoughness = (e) => {setToughness(e.target.value)}
+    const handleText = (e) => {setText(e.target.value)}
+    const handleMana = (e) => {setMana(e.target.value)}
     const handleImage = (e) => {setImage(e.target.value)}
 
     const handleSubmit = (e) => {
@@ -28,17 +28,19 @@ export default function UpdateCard({cardData,setCardData}){
         
         const UpdatedCard = cardData.map((card) => {
         if(card.multiverseid == multiverseid){    
-            return{multiverseid, name,type,power,toughness,imageUrl}
+            return{multiverseid,name,manaCost,type,text,imageUrl}
         }
         return card;
     });
         setCardData(UpdatedCard)
-        navigate ("/");
+        navigate ("/deckListing");
     }
 
     return(
+        <>
+        <Navbar/>
         <div>
-        <h1>Add Card</h1>
+        <h1>Update Card</h1>
         <form className="form"  style ={{display: "flex", alignItems:"flex-start", flexDirection:"column"}}>
             <div className="inputForm">
             <label>Name:</label>
@@ -71,28 +73,29 @@ export default function UpdateCard({cardData,setCardData}){
             </div>
 
             <div className="inputForm">
-            <label>Power:</label>
+            <label>Text:</label>
             <input
                 type="text"
                 name="description"
-                value={power}
-                onChange={handlePower}
+                value={text}
+                onChange={handleText}
             />
             </div>
 
             <div className="inputForm">
-            <label>Toughness:</label>
+            <label>Mana:</label>
             <input
-                type="number"
-                name="price"
-                value={toughness}
-                onChange={handletoughness}
+                type="text"
+                name="manaCost"
+                value={manaCost}
+                onChange={handleMana}
             />
             </div>
             <button type="submit" onClick={handleSubmit}>Save Card</button>
            
         </form>
         </div>
+        </>
     );
 
     
