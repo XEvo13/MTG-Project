@@ -33,7 +33,7 @@ export default function SingleCard({cardData, deleteCard, addFavourite, favourit
         <div>
         <div>Name: {foundCard.name}</div>
         <div>Mana Cost: {foundCard.manaCost}</div>
-        <img src={foundCard.imageUrl} style={{borderRadius:"10%"}}/>
+        <img src={foundCard.imageUrl} style={{borderRadius:"10%",height:"310px", width:"223px"}}/>
         <div>Type: {foundCard.type}</div>
         <div>Text: {foundCard.text}</div>
         </div>

@@ -27,7 +27,7 @@ export default function MyCards({favourites, deleteFav}){
            
               <div >{singlecard.name}</div>
               <div>{singlecard.type}</div>
-              <img src={singlecard.imageUrl} style={{borderRadius:"10%"}} />
+              <img src={singlecard.imageUrl} style={{borderRadius:"10%",height:"310px", width:"223px"}} />
               <button className="delete-button" onClick={() => deleteFav(singlecard.multiverseid)}>Delete this from Favourites</button>
             </li>
           );

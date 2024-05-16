@@ -42,7 +42,7 @@ export default function DeckListing({cardData,isLoading}){
                 <div>{singlecard.toughness}</div> */}
                 <Link to={`/singleCard/${singlecard.multiverseid}`}>
                   <img
-                    style={{ borderRadius: "10px" }}
+                    style={{ borderRadius: "10px", height:"310px", width:"223px" }}
                     src={singlecard.imageUrl}
                   />
                 </Link>
