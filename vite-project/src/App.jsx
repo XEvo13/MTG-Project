@@ -21,12 +21,28 @@ function App() {
 // GET CARD DATA
   const cardsURL = "https://api.magicthegathering.io/v1/cards"; 
   useEffect(() => {
+
+    // TO DO:
+    // get item cards from localstorage
+    const cardsLS =  JSON.parse(localStorage.getItem("cards"))
+
+    console.log("cards",cardsLS)
+    // if cards, setstate with value of cards
+    // {cardsLS && setCardData(cardsLS)}
+    // if no cards in localstorage fetchcards()
+    if(cardsLS.length === 0) {
     fetchCards().then((data) => {
-      setCardData(data); // IMPLEMENT TIMEOUT MISSING......
+      localStorage.setItem("cards", JSON.stringify(data))
+      // setCardData(data); 
       const timeoutId= setTimeout(()=>{
         setIsLoading(false);
       },4000)
-    });
+    })}
+
+    else{
+      console.log("no fetching")
+      setCardData(cardsLS)
+    }
   }, []);
 
 // ADD CARD
@@ -38,7 +54,7 @@ const deleteCard = (multiverseid) => {
   setCardData(cardData.filter((card) => card.multiverseid !== multiverseid))}
 
 // ADD TO FAVOURITES
-  console.log(cardData)
+  // console.log(cardData)
   const [favourites,setFavourites] = useState([]);
   const addFavourite = (card) => setFavourites([...favourites,card]);
   console.log(favourites)
