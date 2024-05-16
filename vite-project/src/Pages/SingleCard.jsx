@@ -3,12 +3,10 @@ import { Link, useParams } from "react-router-dom"
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
-export default function SingleCard({cardData, deleteCard, addFavourite}){
+export default function SingleCard({cardData, deleteCard, addFavourite, favourites}){
     
     const navigate = useNavigate();
     const {multiverseid} = useParams();
-
-
 
     const foundCard = cardData.find((card) => card.multiverseid == multiverseid) 
 
@@ -21,10 +19,9 @@ export default function SingleCard({cardData, deleteCard, addFavourite}){
 
     const handleFavourites = (e) => {
       e.preventDefault()
-
+      if(favourites.find((card) => card.multiverseid == multiverseid)) return;
       addFavourite(foundCard)
       navigate("/deckListing");
-
   }
 
     return (

@@ -39,6 +39,8 @@ export default function UpdateCard({cardData,setCardData}){
     return(
         <>
         <Navbar/>
+        <h1>Magic: The Gathering </h1>
+        <hr/>
         <div>
         <h1>Update Card</h1>
         <form className="form"  style ={{display: "flex", alignItems:"flex-start", flexDirection:"column"}}>

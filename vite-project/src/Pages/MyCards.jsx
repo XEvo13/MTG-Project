@@ -2,7 +2,7 @@
  import "../App.css"
  import Navbar from "../components/Navbar"; 
 
-export default function MyCards({favourites}){
+export default function MyCards({favourites, deleteFav}){
   console.log(favourites)
    const navigate = useNavigate();
     return(
@@ -22,13 +22,13 @@ export default function MyCards({favourites}){
         :
         favourites.map((singlecard, index) => {
           return (
-            
+
             <li className="cards" style={{display:"flex"}} key={index}>
            
               <div >{singlecard.name}</div>
               <div>{singlecard.type}</div>
               <img src={singlecard.imageUrl} style={{borderRadius:"10%"}} />
-           
+              <button className="delete-button" onClick={() => deleteFav(singlecard.multiverseid)}>Delete this from Favourites</button>
             </li>
           );
         })
